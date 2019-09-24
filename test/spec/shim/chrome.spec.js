@@ -227,7 +227,7 @@ describe("chrome", () => {
         });
 
         describe("chrome.cast.media.timeout", () => {
-            it ("should have all properties", () => {
+            it("should have all properties", () => {
                 expect(chrome.cast.media.timeout.editTracksInfo).toBe(0);
                 expect(chrome.cast.media.timeout.getStatus).toBe(0);
                 expect(chrome.cast.media.timeout.load).toBe(0);
@@ -237,7 +237,7 @@ describe("chrome", () => {
                 expect(chrome.cast.media.timeout.seek).toBe(0);
                 expect(chrome.cast.media.timeout.setVolume).toBe(0);
                 expect(chrome.cast.media.timeout.stop).toBe(0);
-            })
+            });
         });
     });
 });

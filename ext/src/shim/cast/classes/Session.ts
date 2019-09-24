@@ -81,16 +81,20 @@ export default class Session {
         this.transportId = sessionId || "";
 
         if (receiver) {
-            sendMessageResponse({
-                subject: "bridge:/session/initialize"
-              , data: {
-                    address: (receiver as any)._address
-                  , port: (receiver as any)._port
-                  , appId
-                  , sessionId
-                }
-              , _id: _id.get(this)
-            });
+            if ((receiver as any)._address
+             || (receiver as any)._port) {
+
+                sendMessageResponse({
+                    subject: "bridge:/session/initialize"
+                  , data: {
+                        address: (receiver as any)._address
+                      , port: (receiver as any)._port
+                      , appId
+                      , sessionId
+                    }
+                  , _id: _id.get(this)
+                });
+            }
         }
 
         const listenerObject = onMessage(message => {

@@ -192,6 +192,15 @@ async function injectSpecs (driver) {
     messageProxy.on("suiteDone"      , result => reporter.suiteDone(result));
     messageProxy.on("suiteStarted"   , result => reporter.suiteStarted(result));
 
+    /**
+     * Workaround crashing issue with console reporter parsing
+     * stack traces. Keep connection to browser alive instead of
+     * exiting.
+     */
+    process.on("uncaughtException", err => {
+        console.error(`\n\n${err}`);
+    });
+
     // Load Jasmine test page
     driver.get(TEST_PAGE_URL);
 })();
